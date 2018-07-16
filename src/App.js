@@ -27,15 +27,17 @@ export default class App extends React.Component{
     // Turning API call into json
     const data = await api_call.json();
     console.log(data);
-    // Never directly manipulate state
-    this.setState({
-      temp: data.main.temp,
-      city: data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      desc: data.weather[0].description,
-      err: ''
-    });
+    if (city && country) {
+      // Never directly manipulate state
+      this.setState({
+        temp: data.main.temp,
+        city: data.name,
+        country: data.sys.country,
+        humidity: data.main.humidity,
+        desc: data.weather[0].description,
+        err: ''
+      });
+    }
   }
 
   render(){
