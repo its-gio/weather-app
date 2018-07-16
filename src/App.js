@@ -10,7 +10,7 @@ export default class App extends React.Component{
   // Making api call is best with async and await
   getWeather = async (e) => {
     e.preventDefault();
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=94555,us&appid=${API_KEY}`);
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=fremont,us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
     console.log(data);
   }
