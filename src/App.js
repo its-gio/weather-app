@@ -4,7 +4,7 @@ import Title from './components/Title';
 import Form from './components/Form';
 import Weather from './components/Weather';
 
-const API_KEY = "145e1b689df6ae9387c0fea9f65bb355";
+const API_KEY = '145e1b689df6ae9387c0fea9f65bb355';
 
 export default class App extends React.Component{
   state = {
@@ -27,6 +27,15 @@ export default class App extends React.Component{
     // Turning API call into json
     const data = await api_call.json();
     console.log(data);
+    // Never directly manipulate state
+    this.setState({
+      temp: data.main.temp,
+      city: data.name,
+      country: data.sys.country,
+      humidity: data.main.humidity,
+      desc: data.weather[0].description,
+      err: ''
+    });
   }
 
   render(){
