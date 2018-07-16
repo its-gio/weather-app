@@ -43,7 +43,14 @@ export default class App extends React.Component{
       <React.Fragment>
         <Title />
         <Form getWeather={this.getWeather} />
-        <Weather />
+        <Weather
+          temp={this.state.temp}
+          city={this.state.city}
+          country={this.state.country}
+          humidity={this.state.humidity}
+          desc={this.state.desc}
+          err={this.state.err}
+        />
       </React.Fragment>
     )
   }
