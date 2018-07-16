@@ -9,6 +9,7 @@ export default class Weather extends React.Component{
         { this.props.temp && <p>Temprature: {this.props.temp}</p> }
         { this.props.humidity && <p>Humidity: {this.props.humidity}</p> }
         { this.props.desc && <p>Conditions: {this.props.desc}</p> }
+        { this.props.err && <p>{this.props.err}</p> }
       </div>
     )
   }
