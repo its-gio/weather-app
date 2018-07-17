@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Title = () => (
-  <div>
+  <header>
       <h1>Weather Finder</h1>
       <p>Find the temperature, conditions and more...</p>
-  </div>
+  </header>
 )
 
 export default Title;
