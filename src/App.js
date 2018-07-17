@@ -26,7 +26,6 @@ export default class App extends React.Component{
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`);
     // Turning API call into json
     const data = await api_call.json();
-    console.log(data);
     if (city && country) {
       // Never directly manipulate state
       this.setState({
