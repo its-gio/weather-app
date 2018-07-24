@@ -2,7 +2,6 @@ import React from 'react';
 
 import Title from './components/Title';
 import Form from './components/Form';
-import Weather from './components/Weather';
 
 const API_KEY = '145e1b689df6ae9387c0fea9f65bb355';
 
@@ -52,8 +51,8 @@ export default class App extends React.Component{
     return(
       <div className="content-container">
         <Title />
-        <Form getWeather={this.getWeather} />
-        <Weather
+        <Form 
+          getWeather={this.getWeather} 
           temp={this.state.temp}
           city={this.state.city}
           country={this.state.country}
