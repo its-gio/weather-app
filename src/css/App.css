@@ -17,7 +17,7 @@ header {
     width: 40%;
     height: var(--content-height);
     position: relative;
-    background: url(../img/weather-background.jpg) no-repeat center;
+    background: url(../img/weather-background.png) no-repeat right;
     background-size: cover;
 }
 
@@ -36,4 +36,17 @@ header {
     text-align: center;
     align-self: flex-start;
     height: var(--content-height);
+    background: #273648;
+}
+
+.content-container__form.right form{
+    padding: 30px 0;
+}
+
+.content-container__form.right form button{
+    background: #ff1818aa;
+    color: white;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
 }
