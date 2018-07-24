@@ -50,7 +50,7 @@ export default class App extends React.Component{
 
   render(){
     return(
-      <React.Fragment>
+      <div className="content-container">
         <Title />
         <Form getWeather={this.getWeather} />
         <Weather
@@ -61,7 +61,7 @@ export default class App extends React.Component{
           desc={this.state.desc}
           err={this.state.err}
         />
-      </React.Fragment>
+      </div>
     )
   }
 }

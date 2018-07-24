@@ -1,3 +1,22 @@
 header {
     text-align: center;
 }
+
+.content-container {
+    display: flex;
+    max-width: 75%;
+    margin: 0 auto;
+    height: 75vh;
+    align-items: center;
+    transform: translateY(5vh);
+    border: 5px solid red;
+}
+
+.content-container__title.left {
+    width: 40%;
+}
+
+.content-container__form.right {
+    width: 60%;
+    text-align: center;
+}
