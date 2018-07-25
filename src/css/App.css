@@ -39,22 +39,34 @@ header {
     background: #273648;
 }
 
-.content-container__form.right form{
+.content-container__form.right form {
     padding: 30px 0;
 }
 
-.content-container__form.right form input{
+.content-container__form.right form input {
     background: none;
     border-bottom: 3px solid var(--form-color);
     border-left: 0;
     border-top: 0;
     border-right: 0;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    color: #fff;
 }
 
-.content-container__form.right form button{
+.content-container__form.right form button {
     background: var(--form-color);
     color: white;
     padding: 10px;
     border: 0;
     border-radius: 5px;
+}
+
+/* Form Actions */
+.content-container__form.right form input:focus, .content-container__form.right form button:focus {
+    outline: none;
+}
+
+.content-container__form.right form button:hover {
+    cursor: pointer;
 }
