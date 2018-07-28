@@ -15,8 +15,10 @@ body {
   background:
     radial-gradient(
       circle at top right,
-      orange,
-      #fb3434
+      #550a39,
+      #dc373c,
+      #f5ad14
+      
     );
   height: 100vh;
 }
