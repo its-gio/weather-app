@@ -45,7 +45,7 @@ header {
 
 .content-container__form.right form input {
     background: none;
-    border-bottom: 3px solid var(--form-color);
+    border-bottom: 1px solid var(--form-color);
     border-left: 0;
     border-top: 0;
     border-right: 0;
