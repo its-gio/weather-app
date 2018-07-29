@@ -1,15 +1,12 @@
 import React from 'react';
-import AreaDropdown from './AreaDropdown';
+import Form from './Form';
+import LocationComplete from './LocationComplete';
 import Weather from './Weather';
 
 const Content = (props) => (
   <div className="content-container__form right">
-    <form onSubmit={props.getWeather}>
-      <input type="text" name="city" placeholder="City..." />
-      <input type="text" name="country" placeholder="Country..." />
-      <button>Get Weather</button>
-    </form>
-    <AreaDropdown />
+    <Form getWeather={props.getWeather} />
+    <LocationComplete />
     <Weather
       temp={props.temp}
       city={props.city}

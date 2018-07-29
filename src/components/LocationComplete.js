@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AreaDropdown = () => (
+const LocationComplete = () => (
   <div className="content-container__locations-list right">
   words
   </div>
 )
 
-export default AreaDropdown;
+export default LocationComplete;
