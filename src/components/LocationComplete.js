@@ -1,8 +1,8 @@
 import React from 'react';
 
-const LocationComplete = () => (
-  <div className="content-container__locations-list right">
-  words
+const LocationComplete = (props) => (
+  <div className="content-container__locations-list">
+    {props.cities.country}
   </div>
 )
 

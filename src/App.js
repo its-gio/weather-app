@@ -1,11 +1,12 @@
 import React from 'react';
+import cities from 'cities.json';
 
 import Title from './components/Title';
 import Content from './components/Content';
 
 const API_KEY = '145e1b689df6ae9387c0fea9f65bb355';
 
-export default class App extends React.Component{
+export default class App extends React.Component {
   state = {
     temp: undefined,
     city: undefined,
@@ -47,18 +48,19 @@ export default class App extends React.Component{
     }
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="content-container">
         <Title />
-        <Content 
-          getWeather={this.getWeather} 
+        <Content
+          getWeather={this.getWeather}
           temp={this.state.temp}
           city={this.state.city}
           country={this.state.country}
           humidity={this.state.humidity}
           desc={this.state.desc}
           err={this.state.err}
+          cities={cities}
         />
       </div>
     )
