@@ -3,8 +3,8 @@ import cities from 'cities.json';
 
 import Title from './components/Title';
 import Content from './components/Content';
+import API_KEY from './Keys';
 
-const API_KEY = '145e1b689df6ae9387c0fea9f65bb355';
 
 export default class App extends React.Component {
   state = {
