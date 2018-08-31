@@ -8,6 +8,7 @@ import API_KEY from './Keys';
 
 export default class App extends React.Component {
   state = {
+    text: undefined,
     temp: undefined,
     city: undefined,
     country: undefined,
@@ -20,8 +21,9 @@ export default class App extends React.Component {
   getWeather = async (e) => {
     e.preventDefault();
     // Grabbing city and country front component form
-    const city = e.target.city.value;
-    const country = e.target.country.value;
+    const location = e.target.location.value;
+    const city = "los-angeles";
+    const country = "us";
     // Making API call
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`);
     // Turning API call into json
@@ -48,11 +50,18 @@ export default class App extends React.Component {
     }
   }
 
+  textUpdate = (e) => {
+    this.setState({
+      text: e.target.value,
+    })
+  }
+
   render() {
     return (
       <div className="content-container">
         <Title />
         <Content
+          textUpdate={this.textUpdate}
           getWeather={this.getWeather}
           temp={this.state.temp}
           city={this.state.city}
@@ -60,6 +69,7 @@ export default class App extends React.Component {
           humidity={this.state.humidity}
           desc={this.state.desc}
           err={this.state.err}
+          text={this.state.text}
           cities={cities}
         />
       </div>

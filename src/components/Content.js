@@ -5,8 +5,8 @@ import Weather from './Weather';
 
 const Content = (props) => (
   <div className="content-container__form right">
-    <Form getWeather={props.getWeather} />
-    <LocationComplete cities={props.cities} />
+    <Form getWeather={props.getWeather} textUpdate={props.textUpdate} />
+    <LocationComplete cities={props.cities} text={props.text} />
     <Weather
       temp={props.temp}
       city={props.city}
