@@ -8,7 +8,7 @@ const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb
 
 export default class App extends React.Component {
   state = {
-    inputText: undefined,
+    inputText: '',
     temp: undefined,
     city: undefined,
     country: undefined,
@@ -24,6 +24,7 @@ export default class App extends React.Component {
       .then(blob => blob.json())
       // Pushing data into suggestionList array
       .then(data => this.setState({ suggestionList: [...data] }));
+    const suggestions = document.querySelector(".suggestions");
   }
 
   updateSearch = (e) => {
@@ -81,7 +82,7 @@ export default class App extends React.Component {
       // Adding highlights to input for city name
       const cityName = place.city.replace(regex, `<span class="hl">${this.state.inputText}</span>`)
       // Adding highlights to input for state name
-      const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`)
+      const stateName = place.state.replace(regex, `<span class="hl">${this.state.inputText}</span>`)
       return `
         <li>
           <span class="name">${cityName}, ${stateName}</span>
@@ -89,9 +90,8 @@ export default class App extends React.Component {
       `
       // Joining map into a string
     }).join('');
-    console.log(html)
     // Making the suggestions empty when input is empty
-    // searchInput.value == '' ? suggestion.innerHTML = '' : suggestion.innerHTML = html;
+    this.state.inputText == '' ? suggestions.innerHTML = '' : suggestions.innerHTML = html;
   }
 
   render() {
@@ -99,7 +99,6 @@ export default class App extends React.Component {
       <div className="content-container">
         <Title />
         <Content
-          suggestionList={this.state.suggestionList}
           updateSearch={this.updateSearch}
           getWeather={this.getWeather}
           temp={this.state.temp}
@@ -108,8 +107,6 @@ export default class App extends React.Component {
           humidity={this.state.humidity}
           desc={this.state.desc}
           err={this.state.err}
-          inputText={this.state.inputText}
-          displayMatches={this.displayMatches}
         />
       </div>
     )
