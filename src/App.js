@@ -28,6 +28,7 @@ export default class App extends React.Component {
 
   updateSearch = (e) => {
     this.setState({ inputText: e.target.value });
+    this.displayMatches();
   }
 
   // Making API call is best with async and await
@@ -68,30 +69,27 @@ export default class App extends React.Component {
     // returns a filtered city array where cities and states are running through a Regex and only one has to match to return
     return cities.filter(place => {
       const regex = new RegExp(wordMatch, 'gi');
-      return place.name.match(regex) || place.country.match(regex);
+      return place.city.match(regex) || place.state.match(regex);
     })
   }
 
   displayMatches = () => {
     // Using findMatch() with the input and cities array
     const matchArray = this.findMatches(this.state.inputText, this.state.suggestionList);
-    console.log(matchArray);
     const html = matchArray.map(place => {
       const regex = new RegExp(this.state.inputText, 'gi');
       // Adding highlights to input for city name
-      const cityName = place.name.replace(regex, this.state.inputText);
-      // .replace(regex, `<span class="hl">${this.state.inputText}</span>`)
+      const cityName = place.city.replace(regex, `<span class="hl">${this.state.inputText}</span>`)
       // Adding highlights to input for state name
-      const countryName = place.country;
-      // .replace(regex, `<span class="hl">${this.value}</span>`)
-      return cityName;
+      const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`)
       return `
         <li>
-          <span class="name">${cityName}, ${countryName}</span>
+          <span class="name">${cityName}, ${stateName}</span>
         </li>
       `
       // Joining map into a string
     }).join('');
+    console.log(html)
     // Making the suggestions empty when input is empty
     // searchInput.value == '' ? suggestion.innerHTML = '' : suggestion.innerHTML = html;
   }
