@@ -1,21 +1,25 @@
-import React from 'react';
-import Form from './Form';
-import LocationComplete from './LocationComplete';
-import Weather from './Weather';
+import React from "react";
+import Form from "./Form";
+import LocationComplete from "./LocationComplete";
+import Weather from "./Weather";
 
-const Content = (props) => (
-  <div className="content-container__form right">
-    <Form getWeather={props.getWeather} updateSearch={props.updateSearch} />
-    <LocationComplete />
-    <Weather
-      temp={props.temp}
-      city={props.city}
-      country={props.country}
-      humidity={props.humidity}
-      desc={props.desc}
-      err={props.err}
-    />
-  </div>
-)
-
-export default Content;
+export default class Content extends React.Component {
+  render() {
+    return (
+      <div className="content-container__form right">
+        <Form getWeather={this.props.getWeather} />
+        {this.props.suggestionList.map((location, i) => (
+          <LocationComplete key={i} location={location} />
+        ))}
+        <Weather
+          temp={this.props.temp}
+          city={this.props.city}
+          country={this.props.country}
+          humidity={this.props.humidity}
+          desc={this.props.desc}
+          err={this.props.err}
+        />
+      </div>
+    );
+  }
+}

@@ -1,46 +1,49 @@
-import React from 'react';
+import React from "react";
 
-import Title from './components/Title';
-import Content from './components/Content';
-import API_KEY from './Keys';
+import Title from "./components/Title";
+import Content from "./components/Content";
+import API_KEY from "./Keys";
 
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+const endpoint =
+  "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
 
 export default class App extends React.Component {
   state = {
-    inputText: '',
+    inputText: "",
     temp: undefined,
     city: undefined,
     country: undefined,
     humidity: undefined,
     desc: undefined,
     err: undefined,
-    suggestionList: []
-  }
+    suggestionList: [],
+    suggestionListUpdated: []
+  };
 
-  componentDidMount() {
-    fetch(endpoint)
-      // Converting fetched data to json
-      .then(blob => blob.json())
-      // Pushing data into suggestionList array
-      .then(data => this.setState({ suggestionList: [...data] }));
-    const suggestions = document.querySelector(".suggestions");
-  }
+  // componentDidMount() {
+  //   fetch(endpoint)
+  //     // Converting fetched data to json
+  //     .then(blob => blob.json())
+  //     // Pushing data into suggestionList array
+  //     .then(data => this.setState({ suggestionList: [...data] }));
+  // }
 
-  updateSearch = (e) => {
+  updateSearch = e => {
     this.setState({ inputText: e.target.value });
     this.displayMatches();
-  }
+  };
 
   // Making API call is best with async and await
-  getWeather = async (e) => {
+  getWeather = async e => {
     e.preventDefault();
     // Grabbing city and country front component form
     const location = e.target.location.value;
     const city = "los angeles";
     const country = "us";
     // Making API call
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`);
+    const api_call = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`
+    );
     // Turning API call into json
     const data = await api_call.json();
     if (city && country) {
@@ -51,7 +54,7 @@ export default class App extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity,
         desc: data.weather[0].description,
-        err: ''
+        err: ""
       });
     } else {
       this.setState({
@@ -60,39 +63,19 @@ export default class App extends React.Component {
         country: undefined,
         humidity: undefined,
         desc: undefined,
-        err: 'Please enter values'
+        err: "Please enter values"
       });
     }
-  }
+  };
 
   // Grabs input values and the cities array as parameters
   findMatches = (wordMatch, cities) => {
     // returns a filtered city array where cities and states are running through a Regex and only one has to match to return
     return cities.filter(place => {
-      const regex = new RegExp(wordMatch, 'gi');
+      const regex = new RegExp(wordMatch, "gi");
       return place.city.match(regex) || place.state.match(regex);
-    })
-  }
-
-  displayMatches = () => {
-    // Using findMatch() with the input and cities array
-    const matchArray = this.findMatches(this.state.inputText, this.state.suggestionList);
-    const html = matchArray.map(place => {
-      const regex = new RegExp(this.state.inputText, 'gi');
-      // Adding highlights to input for city name
-      const cityName = place.city.replace(regex, `<span class="hl">${this.state.inputText}</span>`)
-      // Adding highlights to input for state name
-      const stateName = place.state.replace(regex, `<span class="hl">${this.state.inputText}</span>`)
-      return `
-        <li>
-          <span class="name">${cityName}, ${stateName}</span>
-        </li>
-      `
-      // Joining map into a string
-    }).join('');
-    // Making the suggestions empty when input is empty
-    this.state.inputText == '' ? suggestions.innerHTML = '' : suggestions.innerHTML = html;
-  }
+    });
+  };
 
   render() {
     return (
@@ -107,8 +90,9 @@ export default class App extends React.Component {
           humidity={this.state.humidity}
           desc={this.state.desc}
           err={this.state.err}
+          suggestionList={this.state.suggestionList}
         />
       </div>
-    )
+    );
   }
 }
