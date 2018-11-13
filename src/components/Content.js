@@ -8,7 +8,7 @@ export default class Content extends React.Component {
     return (
       <div className="content-container__form right">
         <Form getWeather={this.props.getWeather} />
-        {this.props.suggestionList.map((location, i) => (
+        {this.props.suggestionListUpdated.map((location, i) => (
           <LocationComplete key={i} location={location} />
         ))}
         <Weather

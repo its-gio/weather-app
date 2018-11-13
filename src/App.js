@@ -30,7 +30,6 @@ export default class App extends React.Component {
 
   updateSearch = e => {
     this.setState({ inputText: e.target.value });
-    this.displayMatches();
   };
 
   // Making API call is best with async and await
@@ -91,6 +90,7 @@ export default class App extends React.Component {
           desc={this.state.desc}
           err={this.state.err}
           suggestionList={this.state.suggestionList}
+          suggestionListUpdated={this.state.suggestionListUpdated}
         />
       </div>
     );
