@@ -1,4 +1,4 @@
 # weather-app
 
-Dev Ed tutorial using darksky API and skycons icon.
+Udemy tutorial using Darksky API.
 Remember to add API keys
