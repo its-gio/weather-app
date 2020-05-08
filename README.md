@@ -1,2 +1,4 @@
-# Weather App tutorial 
-App using React JS and APIs
+# weather-app
+
+Dev Ed tutorial using darksky API and skycons icon.
+Remember to add API keys
