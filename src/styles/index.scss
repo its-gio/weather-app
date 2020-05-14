@@ -46,14 +46,15 @@ body {
 }
 
 .modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .3);
 
-  &--outer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, .3);
+  &.hidden {
+    display: none;
   }
 
   &--inner {
@@ -65,6 +66,7 @@ body {
     top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: top 100ms ease-in;
 
     &__title {
       display: flex;
@@ -76,7 +78,7 @@ body {
         color: #0074D9;
       }
 
-      .exit {
+      #exit-modal {
         border-radius: 3px;
         padding: 5px 10px;
         color: #aaa;
