@@ -45,6 +45,7 @@ body {
   }
 }
 
+// Modal Styles
 .modal {
   position: absolute;
   top: 0;
@@ -53,10 +54,16 @@ body {
   height: 100vh;
   background-color: rgba(0, 0, 0, .3);
 
-  &.hidden {
-    display: none;
+  &:hover > &--inner {
+    top: 15%;
   }
 
+  &.hidden {
+    display: none;
+
+    
+  }
+  
   &--inner {
     max-width: 500px;
     width: 100%;
@@ -66,7 +73,7 @@ body {
     top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: top 100ms ease-in;
+    transition: top 300ms ease-in-out;
 
     &__title {
       display: flex;
