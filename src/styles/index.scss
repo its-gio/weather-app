@@ -43,3 +43,28 @@ body {
     }
   }
 }
+
+.modal {
+
+  &--outer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+  }
+
+  &--inner {
+    max-width: 900px;
+    width: 100%;
+    padding: 20px 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    // &__
+  }
+}
