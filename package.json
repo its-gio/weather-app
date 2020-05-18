@@ -20,5 +20,9 @@
   "homepage": "https://github.com/its-gio/weather-app#readme",
   "devDependencies": {
     "sass": "^1.26.5"
-  }
+  },
+  "dependencies": {},
+  "browserslist": [
+    "last 1 Chrome versions"
+  ]
 }

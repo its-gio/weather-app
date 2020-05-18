@@ -54,14 +54,12 @@ body {
   height: 100vh;
   background-color: rgba(0, 0, 0, .3);
 
-  &:hover > &--inner {
-    top: 15%;
-  }
+  // &:hover > &--inner {
+  //   top: 15%;
+  // }
 
   &.hidden {
     display: none;
-
-    
   }
   
   &--inner {
