@@ -1,3 +1,5 @@
+const icon = new Skycons();
+
 export default class UI {
   constructor() {
     this.location = document.querySelector('#location');
@@ -13,10 +15,13 @@ export default class UI {
     const { currently } = data;
     let cleanLoc = `${data.timezone.split('/')[1].split('_').join(" ")}, ${data.flags.units.toUpperCase()}`;
 
+    console.log(data);
+
     this.location.textContent = cleanLoc;
     this.desc.textContent = currently.summary;
     this.string.textContent = `${currently.temperature} F`;
-    // this.icon.
+    icon.set(this.icon, currently.icon);
+    icon.play();
     this.humidity.textContent = currently.humidity;
     this.dewpoint.textContent = currently.dewPoint;
     this.wind.textContent = currently.windSpeed;
