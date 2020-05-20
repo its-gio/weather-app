@@ -22,7 +22,7 @@ export default class Weather {
       const response = await fetch(`${this.proxy}https://api.darksky.net/forecast/${this.dsAPI}/${this.latt},${this.long}`)
         .then(blob => blob.json());
       
-      return response.currently;
+      return response;
     } catch (err) {
       return console.error(err);
     }
