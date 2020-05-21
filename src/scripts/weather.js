@@ -1,5 +1,6 @@
 import Weather from './getWeather';
 import UI from './UI';
+import toggleModal from './modalToggle';
 
 const saveLocation = document.querySelector('#save-change');
 const weather = new Weather('Los Angeles', 'CA');
@@ -19,6 +20,7 @@ function handleSubmit(e) {
   weather.changeLocation(city, state);
 
   getWeather();
+  toggleModal();
 }
 
 document.addEventListener('DOMContentLoaded', getWeather);
