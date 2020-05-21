@@ -1,13 +1,25 @@
 import Weather from './getWeather';
 import UI from './UI';
 
+const saveLocation = document.querySelector('#save-change');
 const weather = new Weather('Los Angeles', 'CA');
 const ui = new UI();
 
-document.addEventListener('DOMContentLoaded', getWeather)
-
 function getWeather() {
   weather.getWeather()
-    .then(data => ui.display(data))
-    .catch(err => console.error(err));
+  .then(data => ui.display(data))
+  .catch(err => console.error(err));
 }
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const city = document.querySelector('#cityInput').value;
+  const state = document.querySelector('#stateInput').value;
+
+  weather.changeLocation(city, state);
+
+  getWeather();
+}
+
+document.addEventListener('DOMContentLoaded', getWeather);
+saveLocation.addEventListener('click', (e) => handleSubmit(e))

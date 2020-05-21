@@ -13,11 +13,10 @@ export default class UI {
 
   display(data) {
     const { currently } = data;
-    let cleanLoc = `${data.timezone.split('/')[1].split('_').join(" ")}, ${data.flags.units.toUpperCase()}`;
 
     console.log(data);
 
-    this.location.textContent = cleanLoc;
+    this.location.textContent = `${data.city}, ${data.state}`;
     this.desc.textContent = currently.summary;
     this.string.textContent = `${currently.temperature} F`;
     icon.set(this.icon, currently.icon);

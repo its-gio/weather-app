@@ -19,10 +19,10 @@ export default class Weather {
       this.latt = getLongLatt.latt;
       this.long = getLongLatt.longt;
 
-      const response = await fetch(`${this.proxy}https://api.darksky.net/forecast/${this.dsAPI}/${this.latt},${this.long}`)
+      const dsData = await fetch(`${this.proxy}https://api.darksky.net/forecast/${this.dsAPI}/${this.latt},${this.long}`)
         .then(blob => blob.json());
-      
-      return response;
+
+      return { city: this.city, state: this.state , ...dsData };
     } catch (err) {
       return console.error(err);
     }
